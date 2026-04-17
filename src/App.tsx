@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { MapPin, Compass, Trees, Waves, Phone, X, CheckCircle, ArrowDown } from 'lucide-react';
 
 import img1 from '../29jk-1.jpeg';
@@ -154,12 +154,51 @@ function LeadModal({ onClose }: { onClose: () => void }) {
 }
 
 // ─── App ─────────────────────────────────────────────────────
+function LeadMagnetPopup({ onClose }: { onClose: () => void }) {
+  return (
+    <motion.div className="fixed inset-0 z-[60] flex items-end" onClick={onClose}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+        className="absolute inset-0 bg-black/40" />
+      <motion.div
+        initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '100%' }}
+        transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+        className="relative w-full h-[60vh] flex flex-col"
+        style={{ backgroundColor: DARK }}
+        onClick={e => e.stopPropagation()}>
+        <div className="flex items-start justify-between px-8 pt-8 pb-2">
+          <div>
+            <p className="text-[10px] uppercase tracking-[2px] mb-3" style={{ color: 'rgba(237,235,230,0.5)' }}>Специальное предложение</p>
+            <h2 className="text-2xl md:text-3xl font-light mb-1" style={{ color: CREAM }}>Получить презентацию</h2>
+            <p className="text-sm" style={{ color: 'rgba(237,235,230,0.6)' }}>и условия беспроцентной рассрочки</p>
+          </div>
+          <button onClick={onClose} className="transition-opacity hover:opacity-100 mt-1" style={{ color: 'rgba(237,235,230,0.4)' }}>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <div className="flex-1 px-8 pb-8 overflow-y-auto">
+          <div className="w-full max-w-md pt-4">
+            <LeadForm dark onSuccess={() => setTimeout(onClose, 2500)} />
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function App() {
   const [modal, setModal] = useState(false);
+  const [leadMagnet, setLeadMagnet] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('lm_seen')) return;
+    const t = setTimeout(() => setLeadMagnet(true), 8000);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <div className="bg-[#EDEBE6] text-[#1B1B19]">
       <AnimatePresence>{modal && <LeadModal onClose={() => setModal(false)} />}</AnimatePresence>
+      <AnimatePresence>{leadMagnet && <LeadMagnetPopup onClose={() => { setLeadMagnet(false); sessionStorage.setItem('lm_seen', '1'); }} />}</AnimatePresence>
 
       {/* Floating CTA */}
       <motion.button
