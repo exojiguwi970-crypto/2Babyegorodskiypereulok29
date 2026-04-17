@@ -47,7 +47,7 @@ function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () 
     if (!phone.trim()) return;
     setState('loading');
     try {
-      await fetch('https://lidoweb.vercel.app/api/lead', {
+      await fetch('https://lidoweb-theta.vercel.app/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, phone, site: 'ЖК 2-й Бабьегородский, 29' }),
