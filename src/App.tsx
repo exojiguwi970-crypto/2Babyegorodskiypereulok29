@@ -31,8 +31,9 @@ type FS = 'idle' | 'loading' | 'success';
 
 function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () => void }) {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState('+7');
   const [state, setState] = useState<FS>('idle');
+  const [phoneError, setPhoneError] = useState(false);
 
   const inputCls = dark
     ? 'bg-transparent border-b border-white/30 text-white placeholder:text-white/40 focus:border-white/70 py-3 text-sm w-full outline-none transition-colors'
@@ -44,7 +45,7 @@ function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () 
 
   const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!phone.trim()) return;
+    if (phone.replace(/\D/g, '').length < 11) { setPhoneError(true); return; }
     setState('loading');
     try {
       await fetch('https://lidoweb-theta.vercel.app/api/lead', {
@@ -68,8 +69,28 @@ function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () 
 
   return (
     <form onSubmit={submit} className="flex flex-col gap-5">
-      <input type="text" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value)} className={inputCls} />
-      <input type="tel" placeholder="Телефон *" required value={phone} onChange={e => setPhone(e.target.value)} className={inputCls} />
+      <input type="text" placeholder="Ваше имя" value={name} onChange={e => setName(e.target.value.replace(/[^а-яёА-ЯЁa-zA-Z\s\-]/g, ''))} className={inputCls} />
+      <input
+        type="tel"
+        placeholder="+7 XXX XXX XX XX"
+        value={phone}
+        onChange={e => {
+          const raw = e.target.value.replace(/\D/g, '').slice(0, 11);
+          if (!raw) { setPhone('+7'); setPhoneError(false); return; }
+          let d = raw.startsWith('8') ? '7' + raw.slice(1) : raw.startsWith('7') ? raw : '7' + raw;
+          d = d.slice(0, 11);
+          let s = '+' + d[0];
+          if (d.length > 1) s += ' ' + d.slice(1, 4);
+          if (d.length > 4) s += ' ' + d.slice(4, 7);
+          if (d.length > 7) s += ' ' + d.slice(7, 9);
+          if (d.length > 9) s += ' ' + d.slice(9, 11);
+          setPhone(s);
+          setPhoneError(false);
+        }}
+        onFocus={() => { if (!phone) setPhone('+7'); }}
+        className={inputCls}
+      />
+      {phoneError && <p className={`text-[11px] -mt-2 ${dark ? 'text-red-400' : 'text-red-500'}`}>Введите российский номер: +7 XXX XXX XX XX</p>}
       <button type="submit" disabled={state === 'loading'} className={btnCls}>
         {state === 'loading' ? 'Отправка...' : 'Узнать цену'}
       </button>
