@@ -47,7 +47,7 @@ type FS = 'idle' | 'loading' | 'success';
 
 function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () => void }) {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('+7');
+  const [phone, setPhone] = useState('+7 9');
   const [state, setState] = useState<FS>('idle');
   const [phoneError, setPhoneError] = useState(false);
 
@@ -93,9 +93,10 @@ function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () 
         value={phone}
         onChange={e => {
           const raw = e.target.value.replace(/\D/g, '').slice(0, 11);
-          if (!raw) { setPhone('+7'); setPhoneError(false); return; }
+          if (!raw) { setPhone('+7 9'); setPhoneError(false); return; }
           let d = raw.startsWith('8') ? '7' + raw.slice(1) : raw.startsWith('7') ? raw : '7' + raw;
           d = d.slice(0, 11);
+          if (d.length > 1 && d[1] !== '9') d = d[0] + '9' + d.slice(2);
           let s = '+' + d[0];
           if (d.length > 1) s += ' ' + d.slice(1, 4);
           if (d.length > 4) s += ' ' + d.slice(4, 7);
@@ -104,7 +105,7 @@ function LeadForm({ dark = false, onSuccess }: { dark?: boolean; onSuccess?: () 
           setPhone(s);
           setPhoneError(false);
         }}
-        onFocus={() => { if (!phone) setPhone('+7'); }}
+        onFocus={() => { if (!phone) setPhone('+7 9'); }}
         className={inputCls}
       />
       {phoneError && <p className={`text-[11px] -mt-2 ${dark ? 'text-red-400' : 'text-red-500'}`}>Введите российский номер: +7 XXX XXX XX XX</p>}
