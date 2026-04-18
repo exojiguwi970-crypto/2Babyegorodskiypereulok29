@@ -1,0 +1,12 @@
+{
+  "name": "ЖК 2-й Бабьегородский 29",
+  "short_name": "Бабьегородский 29",
+  "description": "Элитный жилой комплекс делюкс-класса у парка Музеон в Якиманке. Старт продаж 2026.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EDEBE6",
+  "theme_color": "#EDEBE6",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

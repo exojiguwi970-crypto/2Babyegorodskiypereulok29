@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ReactNode, useState, useEffect } from 'react';
 import { MapPin, Compass, Trees, Waves, Phone, X, CheckCircle, ArrowDown } from 'lucide-react';
 
-import img1 from '../29jk-1.jpeg';
-import img2 from '../29jk-2.jpeg';
-import img3 from '../29jk-3.jpeg';
+const img1 = '/images/zhk-babyegorodsky-29-fasad.jpeg';
+const img2 = '/images/zhk-babyegorodsky-29-interer.jpeg';
+const img3 = '/images/zhk-babyegorodsky-29-vid.jpeg';
 
 // ─── Palette ────────────────────────────────────────────────
 const CREAM  = '#EDEBE6';

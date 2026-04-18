@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://babiegorodsky29.ru/</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2025-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://babiegorodsky29.ru/29jk-1.jpeg</image:loc>
-      <image:title>ЖК 2-й Бабьегородский 29 — фасад</image:title>
-      <image:caption>Жилой комплекс делюкс-класса 2-й Бабьегородский 29 в Якиманке</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://babiegorodsky29.ru/29jk-2.jpeg</image:loc>
-      <image:title>ЖК 2-й Бабьегородский 29 — архитектурная концепция</image:title>
-      <image:caption>Архитектурная концепция ЖК 2-й Бабьегородский 29, бюро Сивил</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://babiegorodsky29.ru/29jk-3.jpeg</image:loc>
-      <image:title>ЖК 2-й Бабьегородский 29 — визуализация</image:title>
-      <image:caption>Визуализация жилого комплекса 2-й Бабьегородский 29</image:caption>
-    </image:image>
   </url>
 </urlset>

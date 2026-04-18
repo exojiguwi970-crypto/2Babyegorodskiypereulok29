@@ -1,12 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Yandex
-Allow: /
-Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term /
-
+Sitemap: https://babiegorodsky29.ru/sitemap_index.xml
 Sitemap: https://babiegorodsky29.ru/sitemap.xml
-Host: babiegorodsky29.ru
+Sitemap: https://babiegorodsky29.ru/sitemap-images.xml

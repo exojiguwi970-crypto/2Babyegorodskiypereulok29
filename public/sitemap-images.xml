@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://babiegorodsky29.ru/</loc>
+    <image:image>
+      <image:loc>https://babiegorodsky29.ru/images/zhk-babyegorodsky-29-fasad.jpeg</image:loc>
+      <image:title>ЖК 2-й Бабьегородский 29 — фасад</image:title>
+      <image:caption>Фасад жилого комплекса делюкс-класса 2-й Бабьегородский 29 в Якиманке</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://babiegorodsky29.ru/images/zhk-babyegorodsky-29-interer.jpeg</image:loc>
+      <image:title>ЖК 2-й Бабьегородский 29 — интерьер</image:title>
+      <image:caption>Интерьеры жилого комплекса 2-й Бабьегородский 29, бюро Сивил</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://babiegorodsky29.ru/images/zhk-babyegorodsky-29-vid.jpeg</image:loc>
+      <image:title>ЖК 2-й Бабьегородский 29 — вид</image:title>
+      <image:caption>Вид на жилой комплекс 2-й Бабьегородский 29 у парка Музеон в Москве</image:caption>
+    </image:image>
+  </url>
+</urlset>
